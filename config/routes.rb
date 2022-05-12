@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'drinkings#index'
   get  "drinkings/index_admin_user/:id"  => "drinkings#index_admin_user", as:"index_admin_user"
 
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
+
 
   resources :drinkings do
     collection do
