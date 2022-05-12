@@ -10,6 +10,80 @@
   </head>
 
   <body>
+    <header>
+      <div class = "header">
+        <div class = "log">
+          <h3>アルポリ</h3>
+        </div>
+        <nav class="nav">
+        <ul class = "nav">
+        <% if logged_in? %>
+          <% if user_admin? %>
+            <div class = "nav_item">
+              <li><%= link_to "飲酒記録管理", index_admin_day_drinkings_path %></li>
+            </div>
+          <% end %>
+          <div class = "nav_item">
+            <li><%= link_to "飲酒記録", drinkings_path(current_user.id) %></li>
+          </div>
+          <div class = "nav_item">
+            <li><%= link_to "飲酒量計算", calculation_drinkings_path(current_user.id) %></li>
+          </div>
+          <div class = "nav_item">
+            <li><%= link_to "アカウント", user_path(current_user.id) %></li>
+          </div>
+          <div class = "nav_item">
+            <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          </div>
+        <% else %>
+          <div class = "nav_item">
+            <li><%= link_to "アカウント登録", new_user_path %></li>
+          </div>
+          <div class = "nav_item">
+            <li><%= link_to "ログイン", new_session_path %></li>
+          </div>
+        <% end %>
+        </ul>
+        </nav>
+        <span class="nav_toggle">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+
+      </div>
+    </header>
+
     <%= yield %>
+
+    <footer>
+    <nav>
+      <ul class = "footer_item">
+        <% if logged_in? %>
+          <% if user_admin? %>
+            <div class = "footer_nav_item">
+              <li><%= link_to "飲酒記録管理", index_admin_day_drinkings_path %></li>
+            </div>
+          <% end %>
+          <div class = "footer_nav_item">
+            <li><%= link_to "飲酒記録", drinkings_path(current_user.id) %></li>
+          </div>
+          <div class = "footer_nav_item">
+            <li><%= link_to "飲酒量計算", calculation_drinkings_path(current_user.id) %></li>
+          </div>
+        <% end %>
+        <div class = "footer_nav_item">
+          <li><h4>アルポリ</h4></li>
+        </div>
+      </ul>
+      <p class ="footer_copy">©haga ryota</p>
+    </nav>
+  </footer>
   </body>
 </html>
+
+<script>
+$('.nav_toggle').on('click', function () {
+  $('.nav_toggle, .nav').toggleClass('show');
+});
+</script>

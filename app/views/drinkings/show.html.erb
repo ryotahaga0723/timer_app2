@@ -1,0 +1,69 @@
+<section class="section">
+<div class ="section_inner">
+<h1>飲酒記録確認</h1>
+
+<p>
+  <strong>運転日時:</strong>
+  <%= @drinking.driving_start_time.strftime("%m/%d %H:%M") %>
+</p>
+
+
+<p>
+  <strong>飲酒状況:</strong>
+  <% if @drinking.status == "〇" %>
+  <%= "飲酒" %>
+  <% else %>
+  <%= "未飲酒" %>
+  <% end %>
+</p>
+
+<% if @drinking.status == "〇" %>
+
+<p>
+  <strong>飲酒日時:</strong>
+  <%= @drinking.drinking_end_time.strftime("%m/%d %H:%M") %>
+</p>
+
+<p>
+  <strong>運転可能時間:</strong>
+  <%= @drinking.time.strftime("%m/%d %H:%M") %>
+</p>
+
+<p>
+  <strong>純アルコール量:</strong>
+  <%= @drinking.total_alcohol.round(2) %>g
+  <br>※一日の適正量は20gです。
+</p>
+
+<p>
+  <strong>詳細:</strong>
+  <table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>度数</th>
+      <th>量（ml）</th>
+      <th>本数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @drinking.alcohols.each do |alcohol| %>
+    <tr>
+    <td><%= alcohol.kind %></td>
+    <td><%= alcohol.frequency %></td>
+    <td><%= alcohol.quantity %></td>
+    <td><%= alcohol.number %></td>
+    <tr>
+  <% end %>
+  </tbody>
+  </table>
+</p>
+
+<% end %>
+
+<%  unless user_admin? %>
+<%= link_to '編集', edit_drinking_path(@drinking) %> 
+<% end %>
+</div>
+</section>

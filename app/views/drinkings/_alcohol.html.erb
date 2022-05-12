@@ -1,0 +1,26 @@
+<div class="nested-fields">
+    <div class="field">
+      <%= alcohol.label :種類 %>
+      <%= alcohol.text_field :kind %>
+    </div>
+
+    <div class="field">
+      <%= alcohol.label :度数 %>
+      <%= alcohol.number_field :frequency, step: "0.1", min: 0 %>
+    </div>
+
+
+    <div class="field">
+      <%= alcohol.label :量（ml） %>
+      <%= alcohol.number_field :quantity, min: 0 %>
+    </div>
+
+    <div class="field">
+      <%= alcohol.label :本数 %>
+      <%= alcohol.number_field :number, step: "0.1", min: 0 %>
+    </div>
+
+    <div class="field">
+      <%= link_to_remove_association "-お酒入力フォーム削除", alcohol %>
+    </div>
+</div>

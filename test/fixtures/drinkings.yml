@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 
+  driving_start_time: 2022-05-10 10:26:13
+  drinking_end_time: 2022-05-10 10:26:13
+  hour: 1.5
+  user_id: 
+
+two:
+  status: 
+  driving_start_time: 2022-05-10 10:26:13
+  drinking_end_time: 2022-05-10 10:26:13
+  hour: 1.5
+  user_id: 

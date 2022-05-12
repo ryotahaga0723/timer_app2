@@ -1,0 +1,23 @@
+<section class="section">
+<div class ="section_inner">
+<h1>飲酒記録確認</h1>
+
+<%= form_with(model: @visually, local: true) do |form| %>
+  <div class="field", id="visually">
+    <span class="visually">目視</span><br>
+    <div class="radio-inline">
+      <%= form.label :異常なし %>
+      <%= form.radio_button :visually, :〇 %>
+    </div>
+    <div class="radio-inline">
+      <%= form.label :異常あり %>
+      <%= form.radio_button :visually, :×, checked: "checked" %>
+    </div>
+ </div>
+
+  <div class="actions">
+    <%= form.submit "登録" %>
+  </div>
+<% end %>
+</div>
+</section>

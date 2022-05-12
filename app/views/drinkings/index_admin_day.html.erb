@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<section class="section">
+<div class ="section_inner">
+<h1><%=@day.strftime("%Y年%m月%d日") %>　飲酒記録一覧</h1>
+
+<%= search_form_for @q, url: index_admin_day_drinkings_path do |f| %>
+  <%= f.label :status_cont, '名前' %>
+  <%= f.search_field :user_name_cont %> 
+
+  <%= f.label :status, '飲酒' %>
+  <%= f.radio_button :status_eq,"", {:checked => true} %>指定なし
+  <%= f.radio_button :status_eq, 1 %>飲酒
+  <%= f.radio_button :status_eq, 2 %>未飲酒
+
+  <%= f.submit '検索' %>
+<% end %>
+
+<%= link_to "前日", index_admin_day_drinkings_path(day: @day.prev_day) %>
+<%= link_to "翌日", index_admin_day_drinkings_path(day: @day.next_day) %>
+
+<table class="osare3-table col4t">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>運転日時</th>
+      <th>飲酒</th>
+      <th>飲酒日時</th>
+      <th>運転可能</th>
+      <th>目視</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drinkings.each do |drinking| %>
+      <tr>
+      <td><%= link_to drinking.user.name, index_admin_user_path(id: drinking.user_id) %></td>
+      <td><%= drinking.driving_start_time.strftime("%m/%d %H:%M") %></td>
+        <td><%= link_to drinking.status, drinking_path(drinking) %></td>
+        <td>
+        <% if drinking.status == "〇" %>
+        <%= drinking.drinking_end_time.strftime("%m/%d %H:%M") %>
+        <% end %></td>
+        <td>
+        <% if (drinking.time - Time.now).to_i >= 0 %>
+          <%= drinking.time.strftime("%m/%d %H:%M") %>
+        <% else %>
+          <%= "〇" %>
+        <% end %>
+        </td>
+        <td><% drinking.visuallies.each do |visually| %>
+          <%= link_to visually.visually, edit_visually_path(visually) %>
+        <% end %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</section>

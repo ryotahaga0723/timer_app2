@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyText
+  frequency: 1.5
+  quantity: 
+  number: 1.5
+  drinking_id: 
+
+two:
+  kind: MyText
+  frequency: 1.5
+  quantity: 
+  number: 1.5
+  drinking_id: 

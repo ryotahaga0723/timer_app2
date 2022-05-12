@@ -1,0 +1,71 @@
+<section class="section">
+<div class ="section_inner">
+<h1>飲酒記録編集</h1>
+
+<%= form_with(model: @drinking, local: true) do |form| %>
+  <% if @drinking.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@drinking.errors.count, "error") %> prohibited this drinking from being saved:</h2>
+
+    <ul>
+      <% @drinking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  
+    <div class="field">
+      <%= form.label :運転日時 %>
+      <%= form.datetime_select :driving_start_time %>
+    </div>
+  
+    <div class="field", id="status">
+      <span class="status">飲酒状況</span><br>
+      <div class="radio-inline">
+        <%= form.label :飲酒 %>
+        <%= form.radio_button :status, :〇, class: "btn", id: "alcohol_btn" %>
+      </div>
+      <div class="radio-inline">
+        <%= form.label :未飲酒 %>
+        <%= form.radio_button :status, :× , class: "btn", id: "non_alcohol_btn" %>
+      </div>
+   </div>
+   
+
+    <div id="alcohol_format">
+    <div class="field">
+      <%= form.label :飲酒日時 %>
+      <%= form.datetime_select :drinking_end_time %>
+    </div>
+  
+    <div id="alcohol_forms">
+    <%= form.fields_for :alcohols do |alcohol| %>
+      <% render 'alcohol', alcohol: alcohol %>
+    <% end %>
+    </div>
+    <%= link_to_add_association '+お酒入力フォーム追加', form, :alcohols, partial: "alcohol", data: {association_insertion_node: '#alcohol_forms', association_insertion_method: 'after'}, form_name: 'alcohol' %>
+    </div>
+  
+
+    <div class="actions">
+      <%= form.submit "登録" %>
+    </div>
+  <% end %>
+  
+  <script>
+    var element1 = document.getElementById("alcohol_btn");
+    var element2 = document.getElementById("non_alcohol_btn");
+  
+    element1.addEventListener('click', function() {
+      document.getElementById('alcohol_format').style.display = "";
+    })
+  
+    element2.addEventListener('click', function() {
+      document.getElementById('alcohol_format').style.display = "none";
+    })
+  </script>
+
+<%= link_to '戻る', drinkings_path %>
+</div>
+<section>

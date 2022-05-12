@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<section class="section">
+<div class ="section_inner">
+<h1>飲酒量計算</h1>
+
+<label>運転日時：</label>
+<form name="calculation" id="calculation">
+<div id="driving_start_time">
+  <input type="datetime-local" id="driving_time">
+</div>
+<input type="hidden" id="user_weight"  value="<%= @user.weight %>">
+<input type="button" value="計算" onclick="calc(driving_start_time);">
+</form>
+
+現時刻からの飲酒可能量
+<label>ビール（500ml）なら</label>
+<input type="number" readonly="" id="beer">杯
+<label>日本酒（180ml）なら</label>
+<input type="number" readonly="" id="sake">合
+<label>ウイスキー（60ml）なら</label>
+<input type="number" readonly="" id="whiskey">杯
+<label>焼酎（25度 100ml）なら</label>
+<input type="number" readonly="" id="shochu">杯
+<label>チューハイ（7% 350ml）なら</label>
+<input type="number" readonly="" id="chuhai">杯
+
+<br>※適量を守って楽しく飲みましょう！
+
+<script>
+
+  function calc(driving_start_time) {
+    var start_time = document.getElementById("driving_time").valueAsNumber;  
+    var now_time = Date.now();
+    var weight = document.getElementById("user_weight").value;
+    var weight_num = Number(weight);
+    
+    //度数×量（ml）
+    var time_diff = start_time - now_time;
+    var alcohol = time_diff * weight_num / 288000;
+
+    //ビールの場合
+    var beer = Math.round(alcohol / 2500 * 10) / 10;
+    var beerForm = document.getElementById("beer");
+    beerForm.value = beer;
+
+    //日本酒の場合
+    var sake = Math.round(alcohol / 2700 *10) / 10;
+    var sakeForm = document.getElementById("sake");
+    sakeForm.value = sake;
+
+    //ウイスキーの場合
+    var whiskey = Math.round(alcohol / 2400 * 10) / 10;
+    var whiskeyForm = document.getElementById("whiskey");
+    whiskeyForm.value = whiskey;
+
+    //焼酎の場合
+    var shochu = Math.round(alcohol / 2500 * 10) / 10;
+    var shochuForm = document.getElementById("shochu");
+    shochuForm.value = shochu;
+   
+    //チューハイの場合
+    var chuhai = Math.round(alcohol / 2450 * 10) / 10;
+    var chuhaiForm = document.getElementById("chuhai");
+    chuhaiForm.value = chuhai;
+    
+  };
+</script>
+</div>
+</section>
