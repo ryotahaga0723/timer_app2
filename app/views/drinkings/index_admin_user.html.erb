@@ -50,7 +50,7 @@
             <%= "警告" %>
           <% end %>
           <% drinking.visuallies.each do |visually| %>
-            <% if (drinking.driving_start_time - Time.now).to_i > 0 && visually.visually = 0 %>
+            <% if (drinking.driving_start_time - Time.now).to_i > 0 and visually.visually == "未確認" %>
               <%= "確認" %>
             <% end %>
           <% end %>    

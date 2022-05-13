@@ -76,7 +76,7 @@ Drinking.create!(
   number: 2.0
   }],
   visuallies_attributes: [{
-    visually: 0
+    visually: 1
   }]
 )
 Drinking.create!(
@@ -87,7 +87,7 @@ Drinking.create!(
   created_at: "2019-07-11 02:33:34", 
   updated_at: "2019-07-11 02:33:34",
   visuallies_attributes: [{
-    visually: 0
+    visually: 2
   }]
 )
 Drinking.create!(
@@ -153,7 +153,7 @@ Drinking.create!(
     number: 1.0
     }],
   visuallies_attributes: [{
-    visually: 0
+    visually: 1
   }]
 )
 Drinking.create!(
@@ -170,14 +170,25 @@ Drinking.create!(
     number: 1.0
   }],
   visuallies_attributes: [{
-    visually: 1
+    visually: 0
   }]
 )
 Drinking.create!(
   status: 2, 
-  driving_start_time: '2022-05-11 02:33:34', 
+  driving_start_time: '2022-05-14 02:33:34', 
   drinking_end_time: '2022-05-10 22:33:34', 
   user_id: 5, 
+  created_at: "2019-07-11 02:33:34", 
+  updated_at: "2019-07-11 02:33:34",
+  visuallies_attributes: [{
+    visually: 1
+  }]
+)
+Drinking.create!(
+  status: 2,
+  driving_start_time: '2022-06-11 02:33:34', 
+  drinking_end_time: "2022-05-11 02:33:34", 
+  user_id: 1, 
   created_at: "2019-07-11 02:33:34", 
   updated_at: "2019-07-11 02:33:34",
   visuallies_attributes: [{

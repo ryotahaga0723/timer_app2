@@ -10,7 +10,7 @@ class DrinkingsController < ApplicationController
 
   def index_admin_day
     @day = params[:day] ? Date.parse(params[:day]) : Time.zone.today   
-    @q = Drinking.where(driving_start_time: @day.all_day).ransack(params[:q])
+    @q = Drinking.left_outer_joins(:visuallies).where(driving_start_time: @day.all_day).ransack(params[:q])
     @drinkings = @q.result(distinct: true)
   end
 

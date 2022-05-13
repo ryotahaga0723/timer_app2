@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <section class="section">
 <div class ="section_inner">
 <h1><%=@day.strftime("%Y年%m月%d日") %>　飲酒記録一覧</h1>
@@ -26,7 +24,7 @@
   </div>
 <% end %>
 
-<%= link_to "前日", index_admin_day_drinkings_path(day: @day.prev_day) %>
+<%= link_to "前日", index_admin_day_drinkings_path(day: @day.prev_day, drinkings: @drinkings) %>
 <%= link_to "翌日", index_admin_day_drinkings_path(day: @day.next_day) %>
 
 <table class="osare3-table col4t">
@@ -51,7 +49,7 @@
         <%= "警告" %>
       <% end %>
       <% drinking.visuallies.each do |visually| %>
-        <% if (drinking.time - Time.now).to_i < 0 && visually.visually = 0 %>
+        <% if visually.visually == "未確認" and (drinking.driving_start_time - Time.now).to_i < 0 %>
           <%= "確認" %>
         <% end %>
       <% end %>
