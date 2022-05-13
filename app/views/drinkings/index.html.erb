@@ -49,7 +49,7 @@
           <%= "〇" %>
         <% end %>
         </td>
-        <td><%= drinking.visuallies.each do |visually| %>
+        <td><% drinking.visuallies.each do |visually| %>
             <%= visually.visually %>
             <% end %></td>
         <td><%= link_to '編集', edit_drinking_path(drinking) %></td>
