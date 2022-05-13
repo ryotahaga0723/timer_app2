@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_05_11_234329) do
   end
 
   create_table "visuallies", force: :cascade do |t|
-    t.bigint "visually", null: false
+    t.bigint "visually", default: 0, null: false
     t.bigint "drinking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
