@@ -1,3 +1,128 @@
 // Place all the styles related to the drinkings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.radio-inline {
+    display: flex;
+  }
+
+.radio-btn{
+    display: flex;
+}
+
+.btn{
+    margin-top: 4px;
+    margin-right: 20px;
+}
+
+.label{
+    padding-right: 10px;
+}
+
+.fields{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 550px){
+    .fields{
+        display: inline-block;
+    }
+  }
+
+.field{
+    margin-right: 15px;
+}
+
+
+.nested-fields{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+#alcohol_format{
+    padding-bottom: 20px;
+}
+
+.input-form{
+    display: flex;
+    padding-bottom: 20px;
+}
+
+
+.form{
+    padding-right: 20px;
+}
+
+#error_message{
+    color: red;
+}
+
+.calc-result{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 550px){
+    .input-form{
+        display: block;
+        padding-bottom: 0px;
+
+    }
+
+    .calc-result{
+        display: block;
+    }
+    
+    .form{
+        padding-bottom: 10px;
+    }  
+}
+
+.osare3-table td:first-child  {
+    color: red;
+    font-weight: bold;
+   }
+
+.search-form{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.search-form-parts{
+    padding-right: 20px;
+}
+
+.submit{
+    height: 20px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 620px){
+    .search-form{
+        display: block;
+    } 
+    .search-form-parts{
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .search-form-user{
+        display: block;
+    } 
+    .search-form-parts{
+        padding-bottom: 10px;
+    }
+}
+
+.show  td:first-child{
+    color: black;
+}
+
+.detail  td:first-child{
+    font-weight: normal;
+}

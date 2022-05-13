@@ -22,13 +22,15 @@
   
     <div class="field", id="status">
       <span class="status">飲酒状況</span><br>
+      <div class ="radio-btn">
       <div class="radio-inline">
-        <%= form.label :飲酒 %>
+        <%= form.label :飲酒, class: "label" %>
         <%= form.radio_button :status, :〇, class: "btn", id: "alcohol_btn" %>
       </div>
       <div class="radio-inline">
-        <%= form.label :未飲酒 %>
+        <%= form.label :未飲酒, class: "label" %>
         <%= form.radio_button :status, :× , class: "btn", id: "non_alcohol_btn", checked: "checked" %>
+      </div>
       </div>
    </div>
     
@@ -38,6 +40,8 @@
       <%= form.datetime_select :drinking_end_time %>
     </div>
   
+    <hr color="#f5b771">
+
     <div id="alcohol_forms">
     <%= form.fields_for :alcohols do |alcohol| %>
       <% render 'alcohol', alcohol: alcohol %>

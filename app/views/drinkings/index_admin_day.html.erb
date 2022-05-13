@@ -4,16 +4,26 @@
 <div class ="section_inner">
 <h1><%=@day.strftime("%Y年%m月%d日") %>　飲酒記録一覧</h1>
 
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>   
+
 <%= search_form_for @q, url: index_admin_day_drinkings_path do |f| %>
-  <%= f.label :status_cont, '名前' %>
-  <%= f.search_field :user_name_cont %> 
-
-  <%= f.label :status, '飲酒' %>
-  <%= f.radio_button :status_eq,"", {:checked => true} %>指定なし
-  <%= f.radio_button :status_eq, 1 %>飲酒
-  <%= f.radio_button :status_eq, 2 %>未飲酒
-
-  <%= f.submit '検索' %>
+  <div class="search-form">
+    <div class="search-form-parts">
+      <%= f.label :status_cont, '名前' %>
+      <%= f.search_field :user_name_cont %> 
+    </div>
+    <div class="search-form-parts">
+      <%= f.label :status, '飲酒' %>
+      <%= f.radio_button :status_eq,"", {:checked => true} %>指定なし
+      <%= f.radio_button :status_eq, 1 %>飲酒
+      <%= f.radio_button :status_eq, 2 %>未飲酒
+    </div>
+    <div class="submit">
+      <%= f.submit '検索' %>
+    </div>
+  </div>
 <% end %>
 
 <%= link_to "前日", index_admin_day_drinkings_path(day: @day.prev_day) %>
@@ -22,6 +32,7 @@
 <table class="osare3-table col4t">
   <thead>
     <tr>
+      <th></th>
       <th>名前</th>
       <th>運転日時</th>
       <th>飲酒</th>
@@ -35,6 +46,16 @@
   <tbody>
     <% @drinkings.each do |drinking| %>
       <tr>
+      <td>
+      <% if (drinking.time - drinking.driving_start_time).to_i > 0 %>
+        <%= "警告" %>
+      <% end %>
+      <% drinking.visuallies.each do |visually| %>
+        <% if (drinking.time - Time.now).to_i < 0 && visually.visually = 0 %>
+          <%= "確認" %>
+        <% end %>
+      <% end %>
+      </td>
       <td><%= link_to drinking.user.name, index_admin_user_path(id: drinking.user_id) %></td>
       <td><%= drinking.driving_start_time.strftime("%m/%d %H:%M") %></td>
         <td><%= link_to drinking.status, drinking_path(drinking) %></td>

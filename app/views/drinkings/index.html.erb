@@ -9,9 +9,14 @@
 <%= link_to "前月", drinkings_path(month: @month.prev_month) %>
 <%= link_to "翌月", drinkings_path(month: @month.next_month) %>
 
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>   
+
 <table class="osare3-table col4t">
   <thead>
     <tr>
+      <th></th>
       <th>運転日時</th>
       <th>飲酒</th>
       <th>飲酒日時</th>
@@ -26,6 +31,11 @@
   <tbody>
     <% @drinkings.each do |drinking| %>
       <tr>
+        <td>
+        <% if (drinking.time - drinking.driving_start_time).to_i > 0 %>
+          <%= "警告" %>
+        <% end %>
+        </td>
         <td><%= drinking.driving_start_time.strftime("%m/%d %H:%M") %></td>
         <td><%= link_to drinking.status, drinking_path(drinking) %></td>
         <td>

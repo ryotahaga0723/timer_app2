@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_05_11_234329) do
   create_table "drinkings", force: :cascade do |t|
     t.bigint "status", null: false
     t.datetime "driving_start_time", null: false
-    t.datetime "drinking_end_time"
+    t.datetime "drinking_end_time", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_05_11_234329) do
   end
 
   create_table "visuallies", force: :cascade do |t|
-    t.bigint "visually", null: false
+    t.bigint "visually", default: 0, null: false
     t.bigint "drinking_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

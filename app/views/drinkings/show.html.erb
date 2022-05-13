@@ -2,42 +2,51 @@
 <div class ="section_inner">
 <h1>飲酒記録確認</h1>
 
-<p>
-  <strong>運転日時:</strong>
-  <%= @drinking.driving_start_time.strftime("%m/%d %H:%M") %>
-</p>
+<table class="osare3-table col4t show">
+<tr>
+  <td><strong>運転日時</strong></td>
+  <td><%= @drinking.driving_start_time.strftime("%m/%d %H:%M") %></td>
+</tr>
 
 
-<p>
-  <strong>飲酒状況:</strong>
+<tr>
+  <td><strong>飲酒状況</strong></td>
+  <td>
   <% if @drinking.status == "〇" %>
   <%= "飲酒" %>
   <% else %>
   <%= "未飲酒" %>
   <% end %>
-</p>
+  </td>
+</th>
 
 <% if @drinking.status == "〇" %>
 
-<p>
-  <strong>飲酒日時:</strong>
-  <%= @drinking.drinking_end_time.strftime("%m/%d %H:%M") %>
-</p>
+<tr>
+  <td><strong>飲酒日時</strong></td>
+  <td><%= @drinking.drinking_end_time.strftime("%m/%d %H:%M") %></td>
+</tr>
 
-<p>
-  <strong>運転可能時間:</strong>
-  <%= @drinking.time.strftime("%m/%d %H:%M") %>
-</p>
+<tr>
+  <td><strong>運転可能時間</strong></td>
+  <td><%= @drinking.time.strftime("%m/%d %H:%M") %></td>
+</tr>
 
-<p>
-  <strong>純アルコール量:</strong>
-  <%= @drinking.total_alcohol.round(2) %>g
-  <br>※一日の適正量は20gです。
-</p>
+<tr>
+  <td><strong>純アルコール量</strong></td>
+  <td><%= @drinking.total_alcohol.round(2) %>g　※一日の適正量は20gです。
+  </td>
+</tr>
+</table>
 
-<p>
-  <strong>詳細:</strong>
-  <table>
+
+<tr>
+  <td><strong>詳細</strong></td>
+</tr>
+
+  <hr color="#f5b771">
+
+  <table class="osare3-table col4t show detail">
   <thead>
     <tr>
       <th>種類</th>
@@ -58,7 +67,6 @@
   <% end %>
   </tbody>
   </table>
-</p>
 
 <% end %>
 

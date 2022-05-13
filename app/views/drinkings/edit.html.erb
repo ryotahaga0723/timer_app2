@@ -14,29 +14,33 @@
         </div>
       <% end %>
   
-      <div class="field">
+      <div class="field setting">
         <%= form.label :運転日時 %>
         <%= form.datetime_select :driving_start_time %>
       </div>
   
-      <div class="field", id="status">
+      <div class="field setting", id="status">
         <span class="status">飲酒状況</span><br>
-        <div class="radio-inline">
-          <%= form.label :飲酒 %>
-          <%= form.radio_button :status, :〇, class: "btn", id: "alcohol_btn" %>
-        </div>
-        <div class="radio-inline">
-          <%= form.label :未飲酒 %>
-          <%= form.radio_button :status, :× , class: "btn", id: "non_alcohol_btn" %>
+        <div class ="radio-btn">
+          <div class="radio-inline">
+            <%= form.label :飲酒, class: "label" %>
+            <%= form.radio_button :status, :〇, class: "btn", id: "alcohol_btn" %>
+          </div>
+          <div class="radio-inline">
+            <%= form.label :未飲酒, class: "label" %>
+            <%= form.radio_button :status, :× , class: "btn", id: "non_alcohol_btn" %>
+          </div>
         </div>
       </div>
    
 
       <div id="alcohol_format">
-        <div class="field">
+        <div class="field setting">
           <%= form.label :飲酒日時 %>
           <%= form.datetime_select :drinking_end_time %>
         </div>
+
+        <hr color="#f5b771">
   
         <div id="alcohol_forms">
           <%= form.fields_for :alcohols do |alcohol| %>
@@ -45,13 +49,18 @@
         </div>
         <%= link_to_add_association '+お酒入力フォーム追加', form, :alcohols, partial: "alcohol", data: {association_insertion_node: '#alcohol_forms', association_insertion_method: 'after'}, form_name: 'alcohol' %>
       </div>
-  
 
-      <div class="actions">
-        <%= form.submit "登録" %>
-      </div>
+      <div class = "button">
+        <div class="actions">
+          <%= form.submit "登録" %>
+        </div>
     <% end %>
   
+    <div id = "back">
+      <%= link_to '戻る', drinkings_path %>
+    </div>
+    </div>
+
     <script>
       var element1 = document.getElementById("alcohol_btn");
       var element2 = document.getElementById("non_alcohol_btn");
@@ -64,7 +73,5 @@
         document.getElementById('alcohol_format').style.display = "none";
       })
     </script>
-
-    <%= link_to '戻る', drinkings_path %>
   </div>
 </section>

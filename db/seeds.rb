@@ -85,7 +85,10 @@ Drinking.create!(
   drinking_end_time: "2022-05-11 02:33:34", 
   user_id: 1, 
   created_at: "2019-07-11 02:33:34", 
-  updated_at: "2019-07-11 02:33:34"
+  updated_at: "2019-07-11 02:33:34",
+  visuallies_attributes: [{
+    visually: 0
+  }]
 )
 Drinking.create!(
   status: 1, 
@@ -171,7 +174,7 @@ Drinking.create!(
   }]
 )
 Drinking.create!(
-  status: 0, 
+  status: 2, 
   driving_start_time: '2022-05-11 02:33:34', 
   drinking_end_time: '2022-05-10 22:33:34', 
   user_id: 5, 

@@ -52,6 +52,7 @@ class DrinkingsController < ApplicationController
   # PATCH/PUT /drinkings/1 or /drinkings/1.json
   def update
     if @drinking.update(drinking_params)
+      flash[:notice] = '飲酒記録を更新しました' 
       redirect_to drinkings_path(current_user.id)
     else
       render :edit, status: :unprocessable_entity
