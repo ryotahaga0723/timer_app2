@@ -27,6 +27,7 @@ https://cacoo.com/diagrams/3tpXWOzaWU6yqk2M/65974
 
 
 ## 画面遷移図
-<img width="708" alt="画面遷移図_task1" src="https://user-images.githubusercontent.com/102888155/167383534-b5a8f4a4-2d8e-453b-96be-73e5df7bb336.png">
+<img width="578" alt="画面遷移図_task1_0513" src="https://user-images.githubusercontent.com/102888155/168277817-6f135140-5694-4128-9288-e0ca29723da1.png">
+
 
 
