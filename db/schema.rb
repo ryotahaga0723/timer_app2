@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_234329) do
     t.bigint "status", null: false
     t.datetime "driving_start_time", null: false
     t.datetime "drinking_end_time"
-    t.float "time"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

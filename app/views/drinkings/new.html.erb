@@ -5,7 +5,7 @@
 <%= form_with(model: @drinking, local: true) do |form| %>
   <% if @drinking.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@drinking.errors.count, "error") %> prohibited this drinking from being saved:</h2>
+    <h2>エラーが発生しました。</h2>
 
     <ul>
       <% @drinking.errors.full_messages.each do |message| %>

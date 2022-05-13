@@ -47,10 +47,6 @@
      list-style: none;
    }
  
-  header {
-     display: block;
- }
-  
   .header{
      padding-left: 10px;
      padding-right: 10px;
@@ -72,6 +68,12 @@
      line-height:30px;
   }
  
+  .global_nav{
+   display: flex;
+   align-items: stretch;
+   padding-right: 20px;
+  }
+
   .nav{
      display: flex;
      align-items: stretch;
@@ -96,6 +98,8 @@
       position: relative;
       width: 1.75rem;
       height: 1.5rem;
+      margin-top: 18px;
+      margin-bottom: 18px;
     }
     .nav_toggle i {
       display: block;
@@ -106,7 +110,7 @@
       transition: transform .5s, opacity .5s;
     }
     .nav_toggle i:nth-child(1) {
-      top: 0;
+      top: 15;
     }
     .nav_toggle i:nth-child(2) {
       top: 0;
@@ -134,7 +138,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 1rem;
+      padding: 2rem;
       opacity: 0;
       visibility: hidden;
       transition: opacity .5s, visibility .5s;
